@@ -1,17 +1,11 @@
-import type { NextPage } from "next";
-
-import classes from "../styles/Home.module.css";
-import HeroImage from "../components/Sections/HomePageImages/HeroImage";
-import FeaturedItemsSection from "../components/Sections/FeaturedItems/FeaturedItemsSection";
-import Description from "../components/Sections/Description/Description";
-import SecondImage from "../components/Sections/HomePageImages/SecondImage";
+import { Fragment } from "react";
 
 const DUMMY_DATA = [
   {
     id: 1,
     image:
       "https://cf.geekdo-images.com/a13ieMPP2s0KEaKNYmtH5w__opengraph/img/0A_yzGwxraMhSkdgPWbwChQeSvE=/fit-in/1200x630/filters:strip_icc()/pic3615739.png",
-    title: "Spirit Island",
+    name: "Spirit Island",
     description:
       "A fun co-operative game for 1-6 players. Command your favorite spirit and defend the island from invaders!",
   },
@@ -41,15 +35,13 @@ const DUMMY_DATA = [
   },
 ];
 
-const Home: NextPage = () => {
+function ProductsListPage() {
   return (
-    <div className={classes.container}>
-      <HeroImage />
-      <FeaturedItemsSection list={DUMMY_DATA} />
-      <SecondImage />
-      <Description />
-    </div>
+    <Fragment>
+      {/* Filter Component */}
+      <h1>Products Page</h1>
+    </Fragment>
   );
-};
+}
 
-export default Home;
+export default ProductsListPage;

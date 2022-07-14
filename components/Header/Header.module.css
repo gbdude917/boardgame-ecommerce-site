@@ -1,0 +1,79 @@
+.header {
+  height: 5rem; /* Use this to pad top and offset first content to be visible */
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  text-align: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.headerWhite {
+  background-color: white;
+  color: black;
+}
+
+.headerTransparent {
+  background-color: transparent;
+  color: white;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 30%;
+  font-size: 2rem;
+  text-align: center;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 804px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .logo {
+    font-size: 1.25rem;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  width: 70%;
+  font-weight: bold;
+  font-size: 1.12rem;
+}
+
+.links :hover {
+  text-decoration: underline;
+}
+
+.burger {
+  cursor: pointer;
+  margin-right: 25px;
+}
+
+.burger div {
+  width: 35px;
+  height: 5px;
+}
+
+.burgerTransparent div {
+  background-color: white;
+  margin: 6px 0;
+}
+
+.burgerBlack div {
+  background-color: black;
+  margin: 6px 0;
+}

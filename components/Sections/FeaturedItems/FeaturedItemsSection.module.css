@@ -1,0 +1,17 @@
+.section {
+  text-align: center;
+  padding: 25px;
+  background-color: white;
+  padding: 75px 0 75px 0;
+}
+
+.section h2 {
+  font-size: 2rem;
+  padding-bottom: 50px;
+}
+
+.list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
