@@ -4,7 +4,7 @@ import classes from "./FeaturedItem.module.css";
 import Card from "../../UI/Card";
 
 interface FeaturedItemProps {
-  id: number;
+  id: string;
   image: string;
   title: string;
   description: string;
@@ -15,7 +15,7 @@ function FeaturedItem(props: FeaturedItemProps) {
     console.log("Featured Item");
   };
   return (
-    <Link href="/products">
+    <Link href={`/products/${props.title}`}>
       <a>
         <Card>
           <div className={classes.container}>

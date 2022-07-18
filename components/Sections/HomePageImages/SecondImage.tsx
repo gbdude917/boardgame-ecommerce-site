@@ -4,7 +4,7 @@ function SecondImage() {
   return (
     <section className={classes.secondImageText}>
       <div className={classes.content}>
-        <h1>Immense Catalog of Boardgames at Your Disposal</h1>
+        <h1>Endless Catalog Packed With Countless Hours of Fun!</h1>
       </div>
     </section>
   );

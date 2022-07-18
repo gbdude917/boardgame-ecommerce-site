@@ -1,4 +1,5 @@
-import type { NextPage } from "next";
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+import { getNData } from "../lib/get-data";
 
 import classes from "../styles/Home.module.css";
 import HeroImage from "../components/Sections/HomePageImages/HeroImage";
@@ -41,11 +42,13 @@ const DUMMY_DATA = [
   },
 ];
 
-const Home: NextPage = () => {
+const Home: NextPage = (
+  props: InferGetStaticPropsType<typeof getStaticProps>
+) => {
   return (
     <div className={classes.container}>
       <HeroImage />
-      <FeaturedItemsSection list={DUMMY_DATA} />
+      <FeaturedItemsSection list={props.featuredGames} />
       <SecondImage />
       <Description />
     </div>
@@ -53,3 +56,11 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const featuredGames = await getNData(4);
+
+  return {
+    props: { featuredGames },
+  };
+};

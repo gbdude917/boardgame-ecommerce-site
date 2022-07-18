@@ -1,0 +1,11 @@
+.burger {
+  cursor: pointer;
+  margin-right: 25px;
+}
+
+.burger div {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}

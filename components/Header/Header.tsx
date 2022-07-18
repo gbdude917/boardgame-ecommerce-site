@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Transition from "react-transition-group/Transition";
 
 import classes from "./Header.module.css";
 import BurgerMenuContents from "./BurgerMenuContents";
+import BurgerMenu from "./BurgerMenu";
 
 // Interface
 interface WindowWidth {
@@ -79,14 +81,7 @@ function Header() {
           </li>
         </ul>
       ) : (
-        <span
-          className={`${burgerStyle} ${classes.burger}`}
-          onClick={openBurgerHandler}
-        >
-          <div />
-          <div />
-          <div />
-        </span>
+        <BurgerMenu burgerHandler={openBurgerHandler} />
       );
   }
 
@@ -97,7 +92,7 @@ function Header() {
           <Link href="/">Gbdude's Board Games</Link>
         </div>
         {navContents}
-        {isOpen && <BurgerMenuContents />}
+        {isOpen && <BurgerMenuContents isOpen={isOpen} setIsOpen={setIsOpen} />}
       </nav>
     </header>
   );

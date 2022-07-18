@@ -14,9 +14,12 @@
 }
 
 .contents section {
-  /* height: 75px; */
+  display: -webkit-box;
+  height: 172px;
+  width: 100%;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .button {
