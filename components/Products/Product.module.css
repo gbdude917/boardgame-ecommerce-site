@@ -1,0 +1,45 @@
+.wrapper {
+  margin: 10px 25px 10px 25px;
+}
+
+.container {
+  height: 300px;
+  width: 300px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 15px;
+}
+
+.contents {
+  background-color: #f0f0f0;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.name,
+.price {
+  /* display: -webkit-box;
+  height: inherit;
+  width: 100%;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden; */
+  width: 50%;
+  align-items: center;
+}
+
+.contents h2 {
+  text-align: center;
+  margin: 5px;
+
+  font-size: 20px;
+}

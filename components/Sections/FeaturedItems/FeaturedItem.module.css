@@ -17,13 +17,13 @@
   display: -webkit-box;
   height: 172px;
   width: 100%;
-  -webkit-line-clamp: 9;
+  -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .button {
-  z-index: 100;
+  z-index: 1;
 }
 
 .container button {

@@ -2,7 +2,7 @@
   height: 5rem; /* Use this to pad top and offset first content to be visible */
   position: fixed;
   width: 100%;
-  z-index: 1000;
+  z-index: 2;
   text-align: center;
   align-items: center;
   transition: 0.3s;
