@@ -1,0 +1,6 @@
+.wrapper {
+  background-color: rgb(240, 240, 240);
+  width: 100%;
+  position: sticky;
+  top: 5rem;
+}
