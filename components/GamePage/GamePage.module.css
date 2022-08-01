@@ -1,0 +1,16 @@
+.container {
+  padding-top: 5rem;
+  width: 100%;
+
+  display: flex;
+}
+
+.static {
+  margin: 2rem;
+  width: 70%;
+}
+
+.sticky {
+  margin: 2rem;
+  width: 30%;
+}

@@ -104,7 +104,6 @@ function ProductPage(props: Props) {
         )}
         {/* <ProductSection list={props.gamesToShow} />  */}
         <ProductSection list={gamesToShow} />
-        {next >= productList.length && ""}
         {next < productList.length && (
           <div className={classes.buttonDiv}>
             <button onClick={() => showMorePostsHandler()}>Load More</button>

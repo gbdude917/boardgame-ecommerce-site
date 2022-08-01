@@ -18,6 +18,8 @@ interface Data {
   msrp: number;
   official_url: string;
   year_published: number;
+  publisher: string;
+  difficulty: number;
 }
 
 export async function getAllData(limit = 4, name = ""): Promise<Data[]> {
@@ -28,11 +30,12 @@ export async function getAllData(limit = 4, name = ""): Promise<Data[]> {
     url = `https://api.boardgameatlas.com/api/search?limit=${limit}&name=${name}&client_id=aFFIeNdONt`;
   }
 
+  console.log(url);
   const response = await fetch(url);
   const data = await response.json();
 
   // Make data into custom format
-  const dataFiltered = data.games.map((game: Data) => {
+  const dataFiltered = data.games.map((game: any) => {
     return {
       id: game.id,
       name: game.name,
@@ -50,6 +53,8 @@ export async function getAllData(limit = 4, name = ""): Promise<Data[]> {
       msrp_text: game.msrp_text,
       official_url: game.official_url,
       year_published: game.year_published,
+      publisher: game.primary_publisher.name,
+      difficulty: game.average_learning_complexity,
     };
   });
 
@@ -91,12 +96,57 @@ export async function getNRandomData(n: number): Promise<Data[]> {
       msrp: game.msrp,
       official_url: game.official_url,
       year_published: game.year_published,
+      publisher: game.primary_publisher.name,
+      difficulty: game.average_learning_complexity,
     };
 
     output.push(filteredData);
   }
 
   return output;
+}
+
+export async function getExactGame(
+  name: string | string[] | undefined
+): Promise<Data> {
+  if (!name) {
+    throw new Error("Name is undefined!");
+  }
+
+  if (Array.isArray(name)) {
+    name = name[0];
+  }
+
+  const url = `https://api.boardgameatlas.com/api/search?name=${name}&exact=true&client_id=aFFIeNdONt`;
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  // Make data into custom format
+  const game = data.games[0];
+  const filteredData: Data = {
+    id: game.id,
+    name: game.name,
+    description_preview: game.description_preview,
+    description: game.description,
+    images: {
+      large: game.images.large || game.image_url,
+      medium: game.images.medium || game.image_url,
+      original: game.images.original || game.image_url,
+      small: game.images.small || game.thumb_url,
+      thumb: game.images.thumb || game.thumb_url,
+    },
+    min_players: game.min_players,
+    max_players: game.max_players,
+    msrp_text: game.msrp_text || null,
+    msrp: game.msrp,
+    official_url: game.official_url,
+    year_published: game.year_published,
+    publisher: game.primary_publisher.name,
+    difficulty: game.average_learning_complexity,
+  };
+
+  return filteredData;
 }
 
 /**
