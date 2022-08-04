@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import classes from "./ProductPage.module.css";
 import SearchBar from "../Search/SearchBar";
@@ -48,20 +48,23 @@ function ProductPage(props: Props) {
     setProductList(props.productList);
   }, [props.productList]);
 
-  // Load when rerender checks complete
+  const loopWithSlice = useCallback(
+    (start: number, end: number) => {
+      const slicedGames = productList.slice(start, end);
+      boardGameContainer = [...boardGameContainer, ...slicedGames];
+      setGamesToShow(boardGameContainer);
+    },
+    [productList]
+  );
+
+  // Load when rerender checks complete (run dev: 4, build: 2)
   useEffect(() => {
-    if (count == 4) {
+    if (count == 2) {
       loopWithSlice(0, gamesPerLoad);
     } else {
       count++;
     }
-  }, [count]);
-
-  const loopWithSlice = (start: number, end: number) => {
-    const slicedGames = productList.slice(start, end);
-    boardGameContainer = [...boardGameContainer, ...slicedGames];
-    setGamesToShow(boardGameContainer);
-  };
+  }, [loopWithSlice]);
 
   const showMorePostsHandler = () => {
     loopWithSlice(next, next + gamesPerLoad);
