@@ -98,7 +98,7 @@ function Header() {
     <header className={`${classes.header} ${headerStyle}`}>
       <nav className={classes.nav}>
         <div className={classes.logo}>
-          <Link href="/">Gbdude&apos;s Board Games</Link>
+          <Link href="/">Gbdude&apos;s Boardgames</Link>
         </div>
         {navContents}
         {isOpen && <BurgerMenuContents isOpen={isOpen} setIsOpen={setIsOpen} />}
