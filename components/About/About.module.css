@@ -1,0 +1,17 @@
+.container {
+  height: 65vh;
+  margin: 5rem;
+  margin-top: 7rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 20px;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container p {
+  font-size: 25px;
+}

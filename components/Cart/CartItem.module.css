@@ -49,3 +49,28 @@
   cursor: pointer;
   background-color: #004fc4;
 }
+
+@media screen and (max-width: 655px) {
+  .img {
+    max-width: 75px;
+    max-height: 50px;
+  }
+
+  .name {
+    font-size: 10px;
+  }
+
+  .msrp {
+    font-size: 10px;
+  }
+
+  .qtyAmount {
+    font-size: 10px;
+  }
+
+  .buttons button {
+    height: 20px;
+    width: 20px;
+    font-size: 8px;
+  }
+}
