@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 import GamePage from "../../components/GamePage/GamePage";
@@ -7,7 +8,18 @@ function ProductPage(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
   const { data } = props;
-  return <GamePage data={data} />;
+  return (
+    <>
+      <Head>
+        <title>{data.name}</title>
+        <meta
+          name="description"
+          content={data.description_preview || data.description}
+        />
+      </Head>
+      <GamePage data={data} />
+    </>
+  );
 }
 
 export default ProductPage;
