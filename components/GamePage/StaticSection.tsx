@@ -1,5 +1,3 @@
-import classes from "./StaticSection.module.css";
-
 // Interfaces
 interface Props {
   title: string;
@@ -8,15 +6,16 @@ interface Props {
 }
 
 function StaticSection(props: Props) {
+  const descriptionContents = props.description ? (
+    <div dangerouslySetInnerHTML={{ __html: props.description }} />
+  ) : (
+    "Description not given"
+  );
   return (
     <div>
-      <section className={classes.imageSection}>
-        <img src={props.img} alt={props.title} />
-      </section>
-
       <section>
         <h2>Description</h2>
-        <div dangerouslySetInnerHTML={{ __html: props.description }} />
+        {descriptionContents}
       </section>
     </div>
   );

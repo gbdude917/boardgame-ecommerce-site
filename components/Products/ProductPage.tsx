@@ -49,8 +49,11 @@ function ProductPage(props: Props) {
 
   // Load when rerender checks complete
   useEffect(() => {
-    if (count == 4) loopWithSlice(0, gamesPerLoad);
-    else count++;
+    if (count == 4) {
+      loopWithSlice(0, gamesPerLoad);
+    } else {
+      count++;
+    }
   }, [count]);
 
   const loopWithSlice = (start: number, end: number) => {
@@ -102,8 +105,10 @@ function ProductPage(props: Props) {
         {invalidName && (
           <p className={classes.error}>Please provide a valid search value.</p>
         )}
-        {/* <ProductSection list={props.gamesToShow} />  */}
-        <ProductSection list={gamesToShow} />
+        {gamesToShow.length === 0 && (
+          <p className={classes.loading}>Loading...</p>
+        )}
+        {gamesToShow.length !== 0 && <ProductSection list={gamesToShow} />}
         {next < productList.length && (
           <div className={classes.buttonDiv}>
             <button onClick={() => showMorePostsHandler()}>Load More</button>

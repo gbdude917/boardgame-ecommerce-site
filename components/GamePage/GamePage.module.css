@@ -14,3 +14,49 @@
   margin: 2rem;
   width: 30%;
 }
+
+.imageSection {
+  text-align: center;
+}
+
+.imageSection img {
+  height: 400px;
+  width: 400px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 20px;
+}
+
+.phoneSticky {
+  display: none;
+}
+
+@media screen and (max-width: 525px) {
+  .container {
+    display: block;
+  }
+
+  .imageSection {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .imageSection img {
+    width: 90%;
+    border-radius: 20px;
+  }
+
+  .static {
+    margin: 0;
+    width: 100%;
+  }
+
+  .sticky {
+    display: none;
+  }
+
+  .phoneSticky {
+    display: block;
+    margin-top: 10px;
+  }
+}

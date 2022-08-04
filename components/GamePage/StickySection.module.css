@@ -1,6 +1,48 @@
 .wrapper {
-  background-color: rgb(240, 240, 240);
   width: 100%;
   position: sticky;
-  top: 5rem;
+  top: 6rem;
+  padding: 15px;
+  border: 1px solid #ebebeb;
+  border-radius: 20px;
+}
+
+.titleSection {
+  margin-top: -15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid grey;
+}
+
+.button {
+  width: 125px;
+  height: 40px;
+  border-radius: 50px;
+  border: none;
+  color: white;
+  background-color: #0066ff;
+  font-size: 18px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #004fc4;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.summaryItem {
+  flex-basis: 50%;
+}
+
+@media screen and (min-width: 526px) and (max-width: 935px) {
+  .summary {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 525px) {
 }
