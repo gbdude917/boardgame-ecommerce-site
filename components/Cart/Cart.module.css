@@ -1,0 +1,62 @@
+.container {
+  margin: 3rem;
+  margin-top: 7rem;
+}
+
+.list {
+  border: 1px solid #dcdcdc;
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.emptyList {
+  border: 1px solid #dcdcdc;
+  border-radius: 20px;
+  padding: 14rem 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.emptyList a {
+  font-style: italic;
+}
+
+.emptyList a:hover {
+  text-decoration: underline;
+}
+
+.total {
+  display: flex;
+  flex-direction: row-reverse;
+
+  margin-right: 25px;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 3rem;
+  margin-right: 25px;
+}
+
+.btnContainer button {
+  height: 75px;
+  width: 150px;
+  font-weight: bold;
+  font-size: 25px;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  background-color: #0066ff;
+}
+
+.btnContainer button:hover {
+  cursor: pointer;
+  background-color: #004fc4;
+}

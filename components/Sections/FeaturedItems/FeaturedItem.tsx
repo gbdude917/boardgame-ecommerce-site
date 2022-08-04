@@ -8,30 +8,27 @@ interface FeaturedItemProps {
   image: string;
   title: string;
   description: string;
+  onAdd: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 function FeaturedItem(props: FeaturedItemProps) {
-  const testHandler = () => {
-    console.log("Featured Item");
-  };
   return (
-    <Link href={`/products/${props.title}`}>
-      <a>
-        <Card>
-          <div className={classes.container}>
+    <Card>
+      <div className={classes.container}>
+        <Link href={`/products/${props.title}`}>
+          <a>
             <div className={classes.contents}>
               <h3>{props.title}</h3>
               <img src={props.image} alt={props.title} />
               <section>{props.description}</section>
             </div>
-
-            <div className={classes.button}>
-              <button onClick={testHandler}>Add to Cart</button>
-            </div>
-          </div>
-        </Card>
-      </a>
-    </Link>
+          </a>
+        </Link>
+        <div className={classes.button}>
+          <button onClick={props.onAdd}>Add to Cart</button>
+        </div>
+      </div>
+    </Card>
   );
 }
 

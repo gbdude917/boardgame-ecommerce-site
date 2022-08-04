@@ -2,13 +2,6 @@ import classes from "./FeaturedItemsSection.module.css";
 import FeaturedItemsList from "./FeaturedItemsList";
 
 // Interfaces
-// interface ListObjects {
-//   id: number;
-//   images: string;
-//   name: string;
-//   description: string;
-// }
-
 interface DataImages {
   large: string;
   medium: string;
@@ -26,12 +19,14 @@ interface Data {
   min_players: number;
   max_players: number;
   msrp_text: string;
+  msrp: number;
   official_url: string;
   year_published: number;
+  amount: number;
 }
 
 interface FeaturedItemsSection {
-  list: Data[]; // TODO: Array of objects
+  list: Data[];
 }
 
 function FeaturedItemsSection(props: FeaturedItemsSection) {

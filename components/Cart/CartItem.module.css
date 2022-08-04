@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19px 0px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.containerIsLast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19px 0px;
+}
+
+.img {
+  height: auto;
+  width: auto;
+  max-width: 100px;
+  max-height: 150px;
+}
+
+.name {
+  width: 33%;
+}
+
+.qtyAmount {
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.buttons button {
+  height: 30px;
+  width: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  background-color: #0066ff;
+}
+
+.buttons button:hover {
+  cursor: pointer;
+  background-color: #004fc4;
+}

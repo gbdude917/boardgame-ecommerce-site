@@ -23,6 +23,7 @@ interface Data {
   msrp: number;
   official_url: string;
   year_published: number;
+  amount: number;
 }
 
 interface Props {
