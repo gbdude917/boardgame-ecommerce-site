@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState, useEffect } from "react";
 
 import ProductPage from "../../components/Products/ProductPage";
@@ -40,7 +41,14 @@ function ProductsListPage() {
     fetchData();
   }, []);
 
-  return <ProductPage productList={productList} />;
+  return (
+    <>
+      <Head>
+        <title>Products Page</title>
+      </Head>
+      <ProductPage productList={productList} />
+    </>
+  );
 }
 
 export default ProductsListPage;

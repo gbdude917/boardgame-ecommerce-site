@@ -1,4 +1,5 @@
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+import Head from "next/head";
 import { getNRandomData, deleteUndefined } from "../lib/get-data";
 
 import classes from "../styles/Home.module.css";
@@ -12,6 +13,13 @@ const Home: NextPage = (
 ) => {
   return (
     <div className={classes.container}>
+      <Head>
+        <title>Gbdude's Board Games</title>
+        <meta
+          name="description"
+          content="Explore our endless collection of board games here!"
+        />
+      </Head>
       <HeroImage />
       <FeaturedItemsSection list={props.featuredGames} />
       <SecondImage />

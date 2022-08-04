@@ -10,6 +10,8 @@ function About() {
         a boardgame ecommerce site. My primary goal was to learn React, NextJS,
         and Typescript through a personal project. You can check out my Github
         or connect with me on Linkedin by clicking the icons down on the footer.
+        The API used to retrieve the board games was from this site:{" "}
+        <a href="https://www.boardgameatlas.com/api/docs">Board Game Atlas</a>.
       </p>
     </div>
   );
