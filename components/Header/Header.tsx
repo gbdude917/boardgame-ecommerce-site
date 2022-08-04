@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Transition from "react-transition-group/Transition";
 
 import classes from "./Header.module.css";
 import BurgerMenuContents from "./BurgerMenuContents";
 import BurgerMenu from "./BurgerMenu";
+import { useCartContext } from "../../store/cart-context";
 
 // Interface
 interface WindowWidth {
@@ -19,6 +19,16 @@ function Header() {
   });
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const cartCtx = useCartContext();
+
+  // Get number of items in cart
+  const { items } = cartCtx;
+
+  const numberOfItems = items.reduce((curCount, item) => {
+    return curCount + item.amount;
+  }, 0);
+
+  let cartHeading = `Cart ${numberOfItems}`;
 
   // Check when the user scrolls and display header conditionally
   useEffect(() => {
@@ -77,7 +87,7 @@ function Header() {
             <Link href="/">About</Link>
           </li>
           <li>
-            <Link href="/cart">Cart 0</Link>
+            <Link href="/cart">{cartHeading}</Link>
           </li>
         </ul>
       ) : (

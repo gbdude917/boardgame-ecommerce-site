@@ -1,6 +1,7 @@
 import classes from "./GamePage.module.css";
 import StaticSection from "./StaticSection";
 import StickySection from "./StickySection";
+import { useCartContext } from "../../store/cart-context";
 
 // Interfaces
 interface DataImages {
@@ -28,6 +29,7 @@ interface Data {
   age: number;
   min_playtime: number;
   max_playtime: number;
+  amount: number;
 }
 
 interface Props {
@@ -36,6 +38,7 @@ interface Props {
 
 function GamePage(props: Props) {
   const { data } = props;
+  const cartCtx = useCartContext();
 
   // Validity check
   let minPlayers = "N/A",
@@ -48,6 +51,10 @@ function GamePage(props: Props) {
   if (data.min_playtime) minPlaytime = data.min_playtime.toString();
   if (data.max_playtime) maxPlaytime = data.max_playtime.toString();
   if (data.age) age = age.toString();
+
+  const addItemToCartHandler = (item: Data) => {
+    cartCtx.addItem(item);
+  };
 
   return (
     <div className={classes.container}>
@@ -69,6 +76,7 @@ function GamePage(props: Props) {
             age={age}
             min_playtime={minPlaytime}
             max_playtime={maxPlaytime}
+            onAdd={addItemToCartHandler.bind(null, data)}
           />
         </div>
 
@@ -92,6 +100,7 @@ function GamePage(props: Props) {
           age={age}
           min_playtime={minPlaytime}
           max_playtime={maxPlaytime}
+          onAdd={addItemToCartHandler.bind(null, data)}
         />
       </div>
     </div>

@@ -23,6 +23,7 @@ interface Data {
   age: number;
   min_playtime: number;
   max_playtime: number;
+  amount: number;
 }
 
 /**
@@ -66,6 +67,7 @@ export async function getAllData(limit = 4, name = ""): Promise<Data[]> {
       age: game.min_age,
       min_playtime: game.min_playtime,
       max_playtime: game.max_playtime,
+      amount: 1,
     };
   });
 
@@ -112,6 +114,7 @@ export async function getNRandomData(n: number): Promise<Data[]> {
       age: game.min_age,
       min_playtime: game.min_playtime,
       max_playtime: game.max_playtime,
+      amount: 1,
     };
 
     output.push(filteredData);
@@ -166,6 +169,7 @@ export async function getClosestMatch(
     age: game.min_age,
     min_playtime: game.min_playtime,
     max_playtime: game.max_playtime,
+    amount: 1,
   };
 
   console.log(filteredData);

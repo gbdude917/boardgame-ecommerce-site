@@ -1,16 +1,9 @@
 import { Fragment } from "react";
 
 import FeaturedItem from "./FeaturedItem";
+import { useCartContext } from "../../../store/cart-context";
 
 // Interfaces
-
-// interface ItemObject {
-//   id: number;
-//   image: string;
-//   title: string;
-//   description: string;
-// }
-
 interface DataImages {
   large: string;
   medium: string;
@@ -28,8 +21,10 @@ interface Data {
   min_players: number;
   max_players: number;
   msrp_text: string;
+  msrp: number;
   official_url: string;
   year_published: number;
+  amount: number;
 }
 
 interface FeaturedItemsList {
@@ -37,6 +32,12 @@ interface FeaturedItemsList {
 }
 
 function FeaturedItemsList(props: FeaturedItemsList) {
+  const cartCtx = useCartContext();
+
+  const addToCartHandler = (item: Data) => {
+    cartCtx.addItem(item);
+  };
+
   return (
     <Fragment>
       {props.list.map((item: Data) => (
@@ -46,6 +47,7 @@ function FeaturedItemsList(props: FeaturedItemsList) {
           image={item.images.small}
           title={item.name}
           description={item.description_preview}
+          onAdd={addToCartHandler.bind(null, item)}
         />
       ))}
     </Fragment>

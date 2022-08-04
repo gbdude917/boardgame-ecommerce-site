@@ -13,13 +13,10 @@ interface Props {
   age: string;
   min_playtime: string;
   max_playtime: string;
+  onAdd: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 function StickySection(props: Props) {
-  const addToCartHandler = () => {
-    console.log("Added to Cart");
-  };
-
   let playerCountContent = "N/A";
   if (props.min_players !== "N/A" || props.max_players !== "N/A") {
     playerCountContent = `${props.min_players}-${props.max_players} Players`;
@@ -31,7 +28,15 @@ function StickySection(props: Props) {
   }
 
   let playtimeContent = "N/A";
-  if (props.min_playtime !== "N/A" || props.max_playtime !== "N/A") {
+  if (
+    (props.min_playtime !== "N/A" || props.max_playtime !== "N/A") &&
+    props.min_playtime === props.max_playtime
+  ) {
+    playtimeContent = `${props.max_playtime} mins`;
+  } else if (
+    (props.min_playtime !== "N/A" || props.max_playtime !== "N/A") &&
+    props.min_playtime === props.max_playtime
+  ) {
     playtimeContent = `${props.min_playtime} - ${props.max_playtime} mins`;
   }
 
@@ -41,7 +46,7 @@ function StickySection(props: Props) {
         <h1>{props.title}</h1>
         <h2>{props.price}</h2>
         <div>
-          <button onClick={addToCartHandler} className={classes.button}>
+          <button onClick={props.onAdd} className={classes.button}>
             Add to Cart
           </button>
         </div>
