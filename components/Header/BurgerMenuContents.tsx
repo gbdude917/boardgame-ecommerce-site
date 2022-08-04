@@ -1,12 +1,15 @@
 import ReactDOM from "react-dom";
 import Link from "next/link";
+import { Fragment } from "react";
 
 import classes from "./BurgerMenuContents.module.css";
 
 // Third Party
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Fragment } from "react";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { useCartContext } from "../../store/cart-context";
+
 // Interface
 interface BurgerMenuContents {
   isOpen: boolean;
@@ -14,6 +17,14 @@ interface BurgerMenuContents {
 }
 
 function BurgerMenuContents(props: BurgerMenuContents) {
+  const cartCtx = useCartContext();
+
+  const { items } = cartCtx;
+
+  const numberOfItems = items.reduce((curCount, item) => {
+    return curCount + item.amount;
+  }, 0);
+
   const closeHandler = () => {
     props.setIsOpen(false);
   };
@@ -38,7 +49,9 @@ function BurgerMenuContents(props: BurgerMenuContents) {
               <span onClick={closeHandler}>About</span>
             </Link>
             <Link href="/cart">
-              <span onClick={closeHandler}>Cart 0</span>
+              <span onClick={closeHandler}>
+                <FontAwesomeIcon icon={faCartShopping} /> {numberOfItems}
+              </span>
             </Link>
           </div>
         </div>

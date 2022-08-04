@@ -101,10 +101,12 @@ function Cart() {
         })}
       </section>
 
-      <div className={classes.total}>{total}</div>
+      <div className={classes.final}>
+        <div className={classes.total}>{total}</div>
 
-      <div className={classes.btnContainer}>
-        <button onClick={checkoutHandler}>Checkout</button>
+        <div className={classes.btnContainer}>
+          <button onClick={checkoutHandler}>Checkout</button>
+        </div>
       </div>
     </div>
   );

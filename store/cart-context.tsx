@@ -159,7 +159,7 @@ export function CartProvider(props: any) {
 
   const cartContext = {
     items: cartState.items,
-    totalAmount: cartState.totalAmount,
+    totalAmount: +cartState.totalAmount.toFixed(2),
     addItem: addItemToCartHandler,
     removeItem: deleteItemFromCartHandler,
     checkout: checkoutHandler,

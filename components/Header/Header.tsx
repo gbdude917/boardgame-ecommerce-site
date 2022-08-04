@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 import classes from "./Header.module.css";
 import BurgerMenuContents from "./BurgerMenuContents";
@@ -27,8 +29,6 @@ function Header() {
   const numberOfItems = items.reduce((curCount, item) => {
     return curCount + item.amount;
   }, 0);
-
-  let cartHeading = `Cart ${numberOfItems}`;
 
   // Check when the user scrolls and display header conditionally
   useEffect(() => {
@@ -59,16 +59,11 @@ function Header() {
 
   // Update style depending on scroll area
   let headerStyle;
-  let burgerStyle;
   if (pathname === "/") {
     headerStyle =
       offset === 0 ? classes.headerTransparent : classes.headerWhite;
-
-    burgerStyle =
-      offset === 0 ? classes.burgerTransparent : classes.burgerBlack;
   } else {
     headerStyle = classes.headerWhite;
-    burgerStyle = classes.burgerBlack;
   }
 
   // Update depending on size of screen
@@ -84,10 +79,14 @@ function Header() {
             <Link href="/products">Products</Link>
           </li>
           <li>
-            <Link href="/">About</Link>
+            <Link href="/about">About</Link>
           </li>
           <li>
-            <Link href="/cart">{cartHeading}</Link>
+            <Link href="/cart">
+              <a>
+                <FontAwesomeIcon icon={faCartShopping} /> {numberOfItems}
+              </a>
+            </Link>
           </li>
         </ul>
       ) : (
