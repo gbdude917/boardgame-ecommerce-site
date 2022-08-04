@@ -14,7 +14,7 @@ const Home: NextPage = (
   return (
     <div className={classes.container}>
       <Head>
-        <title>Gbdude's Board Games</title>
+        <title>Gbdude&apos;s Board Games</title>
         <meta
           name="description"
           content="Explore our endless collection of board games here!"

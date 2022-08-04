@@ -80,7 +80,7 @@ function StickySection(props: Props) {
         <section className={classes.summaryItem}>
           <h3>Publisher</h3>
           <div>
-            <a href={props.official_url} target="_blank">
+            <a href={props.official_url} target="_blank" rel="noreferrer">
               {props.publisher || "Not given"}
             </a>
           </div>

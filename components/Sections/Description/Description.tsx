@@ -42,7 +42,7 @@ function Description() {
               <h3>Product Quality</h3>
               <p>
                 We make sure that all of our products are in the best condition.
-                If you aren't satisfied, you can replace the board game for
+                If you are not satisfied, you can replace the board game for
                 free!
               </p>
             </div>

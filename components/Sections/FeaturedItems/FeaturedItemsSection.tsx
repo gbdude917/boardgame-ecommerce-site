@@ -22,6 +22,11 @@ interface Data {
   msrp: number;
   official_url: string;
   year_published: number;
+  publisher: string;
+  difficulty: number;
+  age: number;
+  min_playtime: number;
+  max_playtime: number;
   amount: number;
 }
 
