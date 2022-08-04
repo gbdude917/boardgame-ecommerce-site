@@ -20,8 +20,17 @@ interface Data {
   year_published: number;
   publisher: string;
   difficulty: number;
+  age: number;
+  min_playtime: number;
+  max_playtime: number;
 }
 
+/**
+ * Fetches data and returns an array of game objects
+ * @param limit limits number of games to return (max: 100)
+ * @param name The search query
+ * @returns An array of games
+ */
 export async function getAllData(limit = 4, name = ""): Promise<Data[]> {
   let url;
   if (name === "") {
@@ -30,7 +39,6 @@ export async function getAllData(limit = 4, name = ""): Promise<Data[]> {
     url = `https://api.boardgameatlas.com/api/search?limit=${limit}&name=${name}&client_id=aFFIeNdONt`;
   }
 
-  console.log(url);
   const response = await fetch(url);
   const data = await response.json();
 
@@ -53,8 +61,11 @@ export async function getAllData(limit = 4, name = ""): Promise<Data[]> {
       msrp_text: game.msrp_text,
       official_url: game.official_url,
       year_published: game.year_published,
-      publisher: game.primary_publisher.name,
+      publisher: game.primary_publisher,
       difficulty: game.average_learning_complexity,
+      age: game.min_age,
+      min_playtime: game.min_playtime,
+      max_playtime: game.max_playtime,
     };
   });
 
@@ -98,6 +109,9 @@ export async function getNRandomData(n: number): Promise<Data[]> {
       year_published: game.year_published,
       publisher: game.primary_publisher.name,
       difficulty: game.average_learning_complexity,
+      age: game.min_age,
+      min_playtime: game.min_playtime,
+      max_playtime: game.max_playtime,
     };
 
     output.push(filteredData);
@@ -106,7 +120,12 @@ export async function getNRandomData(n: number): Promise<Data[]> {
   return output;
 }
 
-export async function getExactGame(
+/**
+ * Retrieve the games that match the search query
+ * @param name Name or list of names to retrieve
+ * @returns The game matching the name
+ */
+export async function getClosestMatch(
   name: string | string[] | undefined
 ): Promise<Data> {
   if (!name) {
@@ -117,7 +136,7 @@ export async function getExactGame(
     name = name[0];
   }
 
-  const url = `https://api.boardgameatlas.com/api/search?name=${name}&exact=true&client_id=aFFIeNdONt`;
+  const url = `https://api.boardgameatlas.com/api/search?name=${name}&client_id=aFFIeNdONt`;
 
   const response = await fetch(url);
   const data = await response.json();
@@ -142,10 +161,14 @@ export async function getExactGame(
     msrp: game.msrp,
     official_url: game.official_url,
     year_published: game.year_published,
-    publisher: game.primary_publisher.name,
+    publisher: game.primary_publisher.name || null,
     difficulty: game.average_learning_complexity,
+    age: game.min_age,
+    min_playtime: game.min_playtime,
+    max_playtime: game.max_playtime,
   };
 
+  console.log(filteredData);
   return filteredData;
 }
 
