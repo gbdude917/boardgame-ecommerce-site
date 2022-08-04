@@ -27,12 +27,6 @@
 
 .name,
 .price {
-  /* display: -webkit-box;
-  height: inherit;
-  width: 100%;
-  -webkit-line-clamp: 8;
-  -webkit-box-orient: vertical;
-  overflow: hidden; */
   width: 50%;
   align-items: center;
 }
@@ -42,4 +36,14 @@
   margin: 5px;
 
   font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .contents h2 {
+    font-size: 15px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
 }
