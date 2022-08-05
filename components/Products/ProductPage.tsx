@@ -71,8 +71,14 @@ function ProductPage(props: Props) {
     setNext(next + gamesPerLoad);
   };
 
-  const updateGamesToShow = (list: Data[]) => {
-    const newGamesToShow = list.slice(0, next); // Ensure that all displayed products get replaced
+  const updateGamesToShow = (list: Data[], newNext?: number) => {
+    let newGamesToShow;
+    if (newNext) {
+      newGamesToShow = list.slice(0, newNext);
+    } else {
+      newGamesToShow = list.slice(0, next);
+    }
+    // Ensure that all displayed products get replaced
     setGamesToShow(newGamesToShow);
   };
 
@@ -94,11 +100,11 @@ function ProductPage(props: Props) {
 
     let list = await updateList();
 
-    boardGameContainer = list.slice(0, next); // Ensure that the games shown are the new list.
+    boardGameContainer = list.splice(0, next + 1); // Ensure that the old list is gone
 
     setProductList(list);
+    updateGamesToShow(list, 8);
     setInvalidName(false);
-    updateGamesToShow(list);
   }
 
   return (
